@@ -1,0 +1,72 @@
+.pdf-reader {
+  overflow: hidden;
+  border: 1px solid #cbd6d1;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 16px 48px #1721260d;
+}
+.pdf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: #fff;
+}
+.pdf-document { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.pdf-document-icon { display: grid; place-items: center; width: 32px; height: 38px; border: 1px solid #b9d4cc; border-radius: 4px 10px 4px 4px; background: #eff6f3; color: var(--teal-dark); font: 23px Georgia, serif; }
+.pdf-document strong { display: block; font-size: 13px; font-weight: 750; line-height: 1.4; }
+.pdf-document-info { display: block; color: var(--muted); font-size: 10px; }
+.pdf-controls { display: flex; align-items: center; gap: 4px; }
+.pdf-reader button, .pdf-tools a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 34px; height: 34px; padding: 0 8px;
+  border: 0; border-radius: 5px; background: transparent;
+  color: #3e5550; font: 22px/1 system-ui, sans-serif;
+  cursor: pointer; text-decoration: none;
+}
+.pdf-reader button:hover, .pdf-tools a:hover { background: #edf4f1; color: var(--teal-dark); }
+.pdf-reader button:disabled { opacity: .3; cursor: default; background: transparent; }
+.pdf-reader :is(button, input, a, .pdf-scroll):focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; }
+.pdf-tools { border-left: 1px solid var(--line); padding-left: 10px; }
+.pdf-tools svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.pdf-page-control { display: flex; gap: 8px; align-items: center; color: #70817a; font-size: 12px; }
+.pdf-page-input { width: 42px; height: 32px; border: 1px solid #d7e1dc; border-radius: 5px; background: #f8faf9; color: var(--ink); text-align: center; font: 600 12px system-ui, sans-serif; appearance: textfield; -moz-appearance: textfield; }
+.pdf-page-input::-webkit-inner-spin-button, .pdf-page-input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.pdf-zoom-value { min-width: 43px; color: var(--muted); text-align: center; font-size: 11px; font-variant-numeric: tabular-nums; }
+.pdf-reader .pdf-fit { font-size: 11px; font-weight: 650; background: #edf4f1; color: var(--teal-dark); padding: 0 10px; margin-left: 4px; }
+.pdf-progress { height: 2px; background: #e2eae5; }
+.pdf-progress > span { display: block; height: 100%; width: 0; background: var(--teal); transition: width .15s; }
+.pdf-scroll { position: relative; height: 78vh; min-height: 500px; max-height: 1050px; overflow: auto; overscroll-behavior: contain; background: #e8edea; scrollbar-color: #afbeb5 #e8edea; scrollbar-width: thin; }
+.pdf-pages { position: relative; display: flex; flex-direction: column; align-items: center; width: max-content; min-width: 100%; padding: 28px 24px 4px; }
+.pdf-page { position: relative; flex: none; margin: 0 0 26px; }
+.pdf-sheet { position: relative; background: #fff; box-shadow: 0 2px 6px #17212612, 0 8px 24px #17212610; }
+.pdf-sheet canvas { display: block; max-width: none; }
+.pdf-page-label { margin: 10px 0 0; text-align: center; color: #728379; font-size: 10px; letter-spacing: .12em; }
+.pdf-loading { margin: 0; padding: 100px 24px; text-align: center; color: var(--muted); font: 20px Georgia, serif; }
+.pdf-loading[hidden] { display: none; }
+.pdf-reader-footer { display: flex; justify-content: space-between; gap: 15px; padding: 11px 20px; border-top: 1px solid #dbe3de; color: #728078; font-size: 10px; }
+.pdf-reader:fullscreen { display: flex; flex-direction: column; border: 0; border-radius: 0; width: 100%; height: 100%; }
+.pdf-reader:fullscreen .pdf-scroll { flex: 1; height: auto; min-height: 0; max-height: none; }
+.reader-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* PDF.js text-layer positioning; selectable text stays aligned with the canvas. */
+.pdf-sheet .textLayer { color-scheme: only light; position: absolute; inset: 0; overflow: clip; line-height: 1; text-align: initial; letter-spacing: normal; word-spacing: normal; text-size-adjust: none; forced-color-adjust: none; transform-origin: 0 0; --min-font-size: 1; --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size)); --min-font-size-inv: calc(1 / var(--min-font-size)); }
+.textLayer :is(span, br) { color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0 0; user-select: text; }
+.textLayer > :not(.markedContent), .textLayer .markedContent span:not(.markedContent) { z-index: 1; --font-height: 0; font-size: calc(var(--text-scale-factor) * var(--font-height)); --scale-x: 1; --rotate: 0deg; transform: rotate(var(--rotate)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv)); }
+.textLayer .markedContent { display: contents; }
+.textLayer ::selection { background: #087c7940; color: transparent; }
+
+@media (max-width: 700px) {
+  .pdf-toolbar { gap: 8px; padding: 10px; }
+  .pdf-document { flex: 1; }
+  .pdf-zoom-controls { order: 4; flex-basis: 100%; justify-content: center; padding-top: 8px; border-top: 1px solid #e5ebe7; }
+  .pdf-tools { border: 0; padding: 0; }
+  .pdf-reader button, .pdf-tools a { min-width: 32px; }
+  .pdf-scroll { height: 70vh; min-height: 420px; }
+  .pdf-pages { padding: 16px 10px 0; }
+  .pdf-reader-footer { padding: 10px; }
+  .pdf-reader-footer > span:last-child { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .pdf-progress > span { transition: none; } }
