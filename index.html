@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
       name="description"
-      content="InterTrack is a behavior world model for robust humanoid whole-body tracking with environment interaction, implausible commands, and fall recovery."
+      content="InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction"
     >
     <title>InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -14,7 +14,7 @@
     <meta property="og:title" content="InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction">
     <meta
       property="og:description"
-      content="InterTrack is a behavior world model for robust humanoid whole-body tracking with environment interaction, implausible commands, and fall recovery."
+      content="InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction"
     >
     <meta property="og:url" content="https://intertrack2026.github.io/">
     <meta property="og:image" content="https://intertrack2026.github.io/assets/images/terrain-pipeline.webp">
@@ -22,7 +22,7 @@
     <meta name="twitter:title" content="InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction">
     <meta
       name="twitter:description"
-      content="InterTrack is a behavior world model for robust humanoid whole-body tracking with environment interaction, implausible commands, and fall recovery."
+      content="InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction"
     >
     <meta name="twitter:image" content="https://intertrack2026.github.io/assets/images/terrain-pipeline.webp">
     <script type="application/ld+json">
@@ -31,7 +31,7 @@
   "@type": "ScholarlyArticle",
   "@id": "https://intertrack2026.github.io/#article",
   "headline": "InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction",
-  "description": "InterTrack is a behavior world model for robust humanoid whole-body tracking with environment interaction, implausible commands, and fall recovery.",
+  "description": "InterTrack: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction",
   "url": "https://intertrack2026.github.io/",
   "mainEntityOfPage": "https://intertrack2026.github.io/",
   "image": "https://intertrack2026.github.io/assets/images/terrain-pipeline.webp",
@@ -93,13 +93,14 @@
             <span class="media-index">00</span>
             <div>
               <strong>Full demo</strong>
-              <span>Real-robot footage forthcoming</span>
+              <span>Video unavailable</span>
             </div>
           </div>
         </div>
         <p class="lead">
-          InterTrack models what the robot can do next while it acts, enabling
-          environment interaction and extreme robustness in a single whole-body controller.
+          A behavior world model predicts future states and behaviors, thereby capturing
+          environment-conditioned dynamics; a unified policy supports precise tracking,
+          environment interaction, and fall recovery under live whole-body commands.
         </p>
       </section>
 
@@ -110,7 +111,7 @@
               <p class="eyebrow">Head-to-head</p>
               <h2>Comparison with SONIC</h2>
             </div>
-            <p>Matched hardware trials: SONIC is shown on the left and ours on the right, driven simultaneously by the same live command.</p>
+            <p>The same live operator command stream is broadcast simultaneously to the two robots running SONIC (left) and ours (right).</p>
           </div>
           <div class="media-grid media-grid-two">
             <article class="media-item">
@@ -118,28 +119,28 @@
                 <div class="media-placeholder"><span class="media-index">01</span><div><strong>Box lifting</strong><span>Object interaction</span></div></div>
               </div>
               <h3>Lifting a box</h3>
-              <p>Ours lifts and holds the box while SONIC loses a stable grasp.</p>
+              <p>InterTrack applies the forces required to lift and hold the box, whereas SONIC merely imitates the lifting motion and drops it.</p>
             </article>
             <article class="media-item">
-              <div class="media-frame" data-video="assets/videos/sonic-payload2.mp4" data-label="SONIC versus ours: kneel-to-stand with a 2 kg fire extinguisher">
+              <div class="media-frame" data-video="assets/videos/sonic-payload2.mp4" data-label="SONIC versus ours: rising with a fire extinguisher">
                 <div class="media-placeholder"><span class="media-index">02</span><div><strong>Fire extinguisher</strong><span>Object interaction</span></div></div>
               </div>
-              <h3>Kneel-to-stand with payload</h3>
-              <p>Ours rises while holding a 2 kg fire extinguisher; SONIC falls during the ascent.</p>
+              <h3>Rising with a fire extinguisher</h3>
+              <p>InterTrack captures and adapts to the payload-induced dynamics of the fire extinguisher, lifting it stably, whereas SONIC loses balance and falls.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/sonic-terrain.mp4" data-label="SONIC versus ours: stepping onto a platform">
                 <div class="media-placeholder"><span class="media-index">03</span><div><strong>Step onto platform</strong><span>Terrain interaction</span></div></div>
               </div>
               <h3>Stepping onto a platform</h3>
-              <p>Ours climbs onto the platform and stabilizes; SONIC fails to complete the ascent.</p>
+              <p>SONIC raises a leg without using the platform to step up, whereas InterTrack completes the motion.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/sonic-terrain2.mp4" data-label="SONIC versus ours: sitting on a box support">
                 <div class="media-placeholder"><span class="media-index">04</span><div><strong>Sit on a box</strong><span>Terrain interaction</span></div></div>
               </div>
-              <h3>Sitting on a support</h3>
-              <p>Ours loads the box as a seat; SONIC remains in a half-squat without stable support.</p>
+              <h3>Sitting on a box</h3>
+              <p>SONIC only half-squats without sitting, whereas InterTrack completes the motion.</p>
             </article>
           </div>
         </div>
@@ -152,29 +153,29 @@
               <p class="eyebrow">Capability 01</p>
               <h2>Environment interaction</h2>
             </div>
-            <p>The controller turns seats and platforms into load-bearing support while coordinating balance with carried objects.</p>
+            <p>The same policy can simultaneously perform cross-terrain mobility and object manipulation.</p>
           </div>
           <div class="media-grid media-grid-three">
             <article class="media-item">
-              <div class="media-frame" data-video="assets/videos/interaction-chair.mp4" data-label="Sitting on a real chair under live whole-body command">
+              <div class="media-frame" data-video="assets/videos/interaction-chair.mp4" data-label="Sitting on a chair">
                 <div class="media-placeholder"><span class="media-index">05</span><div><strong>Chair support</strong><span>Load-bearing contact</span></div></div>
               </div>
               <h3>Sitting on a chair</h3>
-              <p>The robot lowers onto a real chair and uses the seat as load-bearing support under live whole-body command.</p>
+              <p>The robot sits on a chair under live whole-body command.</p>
             </article>
             <article class="media-item">
-              <div class="media-frame" data-video="assets/videos/interaction-step.mp4" data-label="Carrying a large black case onto a platform">
+              <div class="media-frame" data-video="assets/videos/interaction-step.mp4" data-label="Carrying a case across a platform">
                 <div class="media-placeholder"><span class="media-index">06</span><div><strong>Case + platform</strong><span>Object and terrain interaction</span></div></div>
               </div>
-              <h3>Carrying a case onto a platform</h3>
-              <p>While holding a large black case, the robot steps onto the platform and stabilizes without dropping it.</p>
+              <h3>Carrying a case across a platform</h3>
+              <p>It carries a case across a platform in one continuous sequence without switching controllers.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/interaction-payload.mp4" data-label="Carrying a cardboard box onto a platform">
                 <div class="media-placeholder"><span class="media-index">07</span><div><strong>Box + platform</strong><span>Payload and terrain interaction</span></div></div>
               </div>
               <h3>Carrying a box onto a platform</h3>
-              <p>The robot climbs while carrying a cardboard box, adapting its balance to both the payload and the platform contact.</p>
+              <p>The robot steps onto a platform while carrying a cardboard box.</p>
             </article>
           </div>
         </div>
@@ -185,34 +186,34 @@
           <div class="section-heading split-heading">
             <div>
               <p class="eyebrow">Capability 02</p>
-              <h2>Extreme robustness</h2>
+              <h2>Robustness</h2>
             </div>
             <p>When a command is implausible in the current environment, the policy produces a stable best-effort response while retaining achievable intent.</p>
           </div>
           <div class="media-grid media-grid-two">
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-chair-removed.mp4" data-label="Chair removed">
-                <div class="media-placeholder"><span class="media-index">08</span><div><strong>Chair removed</strong><span>Best-effort squat</span></div></div>
+                <div class="media-placeholder"><span class="media-index">08</span><div><strong>Chair removed</strong><span>Best-effort motion</span></div></div>
               </div>
               <h3>Missing support</h3>
-              <p>The same sitting command resolves to a stable squat.</p>
+              <p>With an expected chair absent, the policy settles into a stable best-effort motion.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-step-removed.mp4" data-label="Step removed">
-                <div class="media-placeholder"><span class="media-index">09</span><div><strong>Step removed</strong><span>Continuous task</span></div></div>
+                <div class="media-placeholder"><span class="media-index">09</span><div><strong>Step removed</strong><span>Best-effort motion</span></div></div>
               </div>
               <h3>Changed terrain</h3>
               <p>With the expected platform absent, the policy settles into a stable best-effort motion.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-disturbance.mp4" data-label="Physical disturbance recovery">
-                <div class="media-placeholder"><span class="media-index">10</span><div><strong>Disturbance</strong><span>Push, trip, recover</span></div></div>
+                <div class="media-placeholder"><span class="media-index">10</span><div><strong>Disturbance</strong><span>Kick-induced fall</span></div></div>
               </div>
               <h3>Physical disturbance</h3>
-              <p>The same tracking policy stands up and resumes tracking after a kick-induced fall.</p>
+              <p>The tracking policy recovers after a kick-induced fall.</p>
             </article>
             <article class="media-item">
-              <div class="media-frame" data-video="assets/videos/robust-unsafe-commands.mp4" data-label="Implausible command filtering comparison in simulation">
+              <div class="media-frame" data-video="assets/videos/robust-unsafe-commands.mp4?v=85f0e5556dc5" data-label="Implausible command filtering comparison in simulation">
                 <div class="media-placeholder"><span class="media-index">11</span><div><strong>Implausible command</strong><span>Best-effort behavior</span></div></div>
               </div>
               <h3>Implausible commands</h3>
@@ -227,9 +228,9 @@
           <div class="section-heading split-heading">
             <div>
               <p class="eyebrow">Motion range</p>
-              <h2>High-difficulty motion</h2>
+              <h2>Whole-body motion capabilities</h2>
             </div>
-            <p>One command interface across flexibility, control, and explosive dynamics.</p>
+            <p>Real-robot trials demonstrate demanding flat-ground motions, including squat jumps, high kicks, and low Tai Chi stances.</p>
           </div>
           <div class="media-grid media-grid-three">
             <article class="media-item">
@@ -239,14 +240,14 @@
               <h3>High kick</h3>
             </article>
             <article class="media-item">
-              <div class="media-frame" data-video="assets/videos/motion-tai-chi.mp4" data-label="Tai chi">
-                <div class="media-placeholder"><span class="media-index">13</span><div><strong>Tai chi</strong><span>Slow control</span></div></div>
+              <div class="media-frame" data-video="assets/videos/motion-tai-chi.mp4" data-label="Low Tai Chi stances">
+                <div class="media-placeholder"><span class="media-index">13</span><div><strong>Tai Chi</strong><span>Low stances</span></div></div>
               </div>
-              <h3>Tai chi</h3>
+              <h3>Low Tai Chi stances</h3>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/motion-jump.mp4" data-label="Squat jumps">
-                <div class="media-placeholder"><span class="media-index">14</span><div><strong>Squat jump</strong><span>Dynamic take-off</span></div></div>
+                <div class="media-placeholder"><span class="media-index">14</span><div><strong>Squat jumps</strong></div></div>
               </div>
               <h3>Squat jumps</h3>
             </article>
@@ -257,7 +258,7 @@
       <section class="band" id="results">
         <div class="section-shell">
           <div class="section-heading">
-            <p class="eyebrow">Positioning</p>
+            <p class="eyebrow">Capability comparison</p>
             <h2>One policy closes the capability gap</h2>
             <p>Prior methods cover pieces of the problem. InterTrack brings them together.</p>
           </div>
@@ -289,7 +290,7 @@
               </tbody>
             </table>
           </div>
-          <p class="table-note">†PGMT’s demo shows over 1 s of teleoperation delay, exceeding the low-latency criterion. ‡Perceptive BFM’s 21-frame future window implies a look-ahead delay of at least 0.4 s at 50 Hz.</p>
+          <p class="table-note">† PGMT postdates InterTrack’s public release; its demo shows over 1 s of teleoperation delay, exceeding our low-latency criterion. ‡ Perceptive BFM’s 21-frame future window implies a look-ahead delay of at least 0.4 s at 50 Hz.</p>
         </div>
       </section>
 
@@ -298,7 +299,7 @@
           <div class="section-heading split-heading">
             <div>
               <p class="eyebrow">Core results</p>
-              <h2>Strong across every regime</h2>
+              <h2>Generalist performance across regimes</h2>
             </div>
             <p>Best values are highlighted. All results are sim-to-sim in MuJoCo, using the official baseline checkpoints and the complete InterTrack controller with safety radius 3.</p>
           </div>
@@ -321,7 +322,7 @@
                   <th scope="col">MPKPE&#8595;</th><th scope="col">RootVel&#8595;</th><th scope="col">SR&#8593;</th>
                   <th scope="col">MPKPE&#8595;</th><th scope="col">RootPos&#8595;</th><th scope="col">SR&#8593;</th>
                   <th scope="col">MPKPE&#8595;</th><th scope="col">SR&#8593;</th>
-                  <th scope="col">SR&#8593;</th><th scope="col">Jerk&#8595;</th>
+                  <th scope="col">SR<sup>†</sup>&#8593;</th><th scope="col">Jerk&#8595;</th>
                 </tr>
               </thead>
               <tbody>
@@ -333,33 +334,37 @@
             </table>
           </div>
           <p class="table-note">
-            Position errors are in mm, RootVel in mm/s, Jerk in rad/s<sup>3</sup>, and SR in %. Fall SR is the recovery rate: standing up and resuming tracking. All other SR columns treat a fall as failure. Each method is rolled out to the end of every reference, including failed trials.
+            Position errors are in mm, RootVel in mm/s, Jerk in rad/s<sup>3</sup>, and SR in %. <sup>†</sup>Fall SR is recovery rate; all other SR columns treat a fall as failure. Each method is rolled out to the end of every reference.
           </p>
+          <p class="table-note">On Standard, InterTrack achieves the lowest MPKPE and highest SR among the three evaluated baselines; HoloMotion-1 achieves the lowest RootVel error.</p>
         </div>
       </section>
 
       <section class="band band-soft" id="method">
         <div class="section-shell">
           <div class="section-heading">
-            <p class="eyebrow">Method overview</p>
-            <h2>A controller that models its own future behavior</h2>
-            <p>
-              A causal Transformer jointly predicts action, next proprioceptive state, and the
-              distribution of the next latent behavior command. At deployment, the preceding
-              behavior distribution identifies and corrects implausible commands from physical history.
-            </p>
+            <p class="eyebrow">Method</p>
+            <h2>Method overview</h2>
           </div>
           <figure class="paper-figure">
             <div class="paper-image" data-image="assets/images/overview.webp" data-label="InterTrack behavior world model overview">
               <div class="figure-placeholder">Method overview</div>
             </div>
             <figcaption>
-              The policy internalizes contact dynamics and behavior admissibility, then reuses its
-              predicted distribution for online best-effort command projection. The continuous
-              latent command conditions the controller; FSQ regularizes a training-only reconstruction branch.
+              <strong>Fig. 2. InterTrack overview.</strong>
+              A partially masked reference window is encoded into a latent behavior command;
+              a finite scalar quantizer (FSQ) regularizes this latent through a training-only reconstruction branch.
+              The causal Transformer consumes the command, proprioception, and previous action,
+              then jointly predicts the action, next state, and command distribution.
+              At deployment, the preceding distribution identifies and corrects implausible commands.
             </figcaption>
           </figure>
-          <p class="table-note">The controller infers contact-conditioned dynamics from proprioceptive history, without scene observations or privileged contact labels. Hardware deployment runs at 50 Hz with a 0.2 s look-ahead buffer for ten future reference frames.</p>
+          <div class="method-details">
+            <h3>Problem setting</h3>
+            <p>When terrain and objects make execution depend on supports, contacts, and loads, the controller infers these conditional dynamics from proprioceptive history without scene observations or privileged contact labels.</p>
+            <h3>Hardware deployment</h3>
+            <p>Hardware deployment runs at 50 Hz with a 0.2 s look-ahead buffer for ten future reference frames.</p>
+          </div>
         </div>
       </section>
 
@@ -367,10 +372,10 @@
         <div class="section-shell">
           <div class="section-heading">
             <p class="eyebrow">Data pipeline</p>
-            <h2>From motion to spatial terrain</h2>
+            <h2>Automatic spatial terrain annotation</h2>
             <p>
-              Contact evidence in retargeted motion is recovered as full 3D, simulator-ready
-              geometry: stairs, seats, boxes, tables, and other supports.
+              We instead infer support geometry from retargeted trajectories, utilizing the
+              large scale of existing motion-capture corpora.
             </p>
           </div>
           <figure class="paper-figure">
@@ -378,19 +383,21 @@
               <img src="assets/images/terrain-pipeline.webp" width="2800" height="579" loading="lazy" decoding="async" alt="Automatic spatial terrain annotation pipeline and dataset coverage">
             </a>
             <figcaption>
-              Contact detection, whole-body penetration filtering, clustering, and primitive fitting
-              turn ordinary motion data into a terrain-paired training corpus. The pipeline identifies
-              12.50, 22.22, and 37.85 hours of terrain interaction in Bones-Seed, MotionMillion,
-              and MotionDecode, respectively.
+              <strong>Fig. 3. Automatic motion-to-terrain annotation and dataset coverage.</strong>
+              <strong>(a)–(e)</strong> Surface samples that exhibit a contact deceleration are accumulated,
+              filtered against whole-body penetration, clustered, and fitted with spatial collision primitives.
+              <strong>(f)</strong> Outer and inner rings show the total duration of each source corpus
+              and its identified terrain-interaction duration, respectively.
             </figcaption>
           </figure>
+          <p class="section-copy">We apply the pipeline to three retargeted corpora: Bones-Seed (288 h), MotionMillion (900 h), and MotionDecode (1000 h), identifying 12.50, 22.22, and 37.85 hours of terrain interaction.</p>
         </div>
       </section>
 
       <section class="band" id="about">
         <div class="section-shell narrow-shell">
           <div class="section-heading">
-            <p class="eyebrow">Abstract</p>
+            <h2>Abstract</h2>
           </div>
           <div class="abstract-copy">
             <p>General-purpose motion trackers enable humanoid robots to follow diverse whole-body motions while maintaining balance, but are trained only on flat ground, failing to exploit bipedal mobility over complex terrain. Cross-terrain controllers, meanwhile, are task-specific or accept only low-dimensional locomotion commands. We introduce InterTrack, the first behavior world model (BWM) for robust whole-body tracking with environment interaction. Its Transformer jointly predicts the next action, state, and behavior distribution, learning environment-conditioned dynamics. To scale interaction training data, an automatic annotation pipeline reconstructs 3D support geometry from retargeted motions. At deployment, the policy handles commands implausible in the current environment in a “best-effort” manner. Quantitatively, InterTrack achieves an 81.3% success rate on terrain interaction (4.3× the best evaluated baseline) and a 99.3% fall-recovery rate, while also improving free-space tracking and outperforming three leading tracking baselines across all of these regimes. To our knowledge, we provide the first demonstration of real-time cross-terrain whole-body teleoperation on a humanoid robot, alongside object interaction, stable responses to missing supports, and robust recovery from falls.</p>

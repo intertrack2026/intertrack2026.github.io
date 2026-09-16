@@ -543,9 +543,31 @@ tr.ours td {
   max-width: 920px;
   margin: 14px auto 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.55;
-  text-align: center;
+  text-align: left;
+}
+
+.method-details,
+.section-copy {
+  max-width: var(--content-width);
+  margin: 28px auto 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.method-details h3 {
+  margin: 24px 0 6px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.method-details h3:first-child {
+  margin-top: 0;
+}
+
+.method-details p {
+  margin: 0;
 }
 
 .result-callouts {
