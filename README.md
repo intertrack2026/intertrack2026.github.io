@@ -35,10 +35,10 @@ The original files were restored without editing or anonymization. They may
 contain branding, people, recognizable recording locations, or old project
 labels and still require review before use in an anonymous submission.
 
-`assets/images/overview.webp` remains absent pending anonymization. Its slot
-displays "Method overview figure forthcoming" until a replacement is supplied.
-The original method overview also contains laboratory footage.
-Do not create an empty WebP file.
+`assets/images/overview.webp` is also included, restored from the original
+project assets without editing. It contains laboratory footage and likewise
+requires review before use in an anonymous submission. All video and image
+paths referenced by the page now have corresponding files.
 
 The terrain pipeline image matches the submission figure and is exported
 without embedded source-document metadata. In the page text, author names, affiliations,

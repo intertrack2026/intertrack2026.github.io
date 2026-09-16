@@ -101,7 +101,7 @@ function scrollToHash() {
 window.addEventListener("load", () => window.requestAnimationFrame(scrollToHash));
 window.addEventListener("hashchange", scrollToHash);
 
-// Keep the figure placeholder until an approved replacement is available.
+// Load each figure and retain its fallback if the image is unavailable.
 async function attachFigure(frame) {
   const source = frame.dataset.image;
   if (!source || !(await resourceExists(source))) return;
