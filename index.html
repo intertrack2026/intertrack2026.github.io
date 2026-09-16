@@ -73,8 +73,8 @@
     <main id="top">
       <section class="hero section-shell">
         <h1>
-          <span>InterTrack</span>
-          A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction
+          <span class="title-line"><span class="title-name"><span class="name-inter">Inter</span><span class="name-track">Track</span>:</span> A Behavior World Model for Robust</span>
+          <span class="title-line">Humanoid Whole-Body <em class="name-origin name-track">Track</em>ing with Environment <em class="name-origin name-inter">Inter</em>action</span>
         </h1>
         <p class="authors">Anonymous Authors</p>
       </section>
@@ -164,18 +164,18 @@
               <p>The robot sits on a chair under live whole-body command.</p>
             </article>
             <article class="media-item">
-              <div class="media-frame" data-video="assets/videos/interaction-step.mp4" data-label="Carrying a case across a platform">
+              <div class="media-frame" data-video="assets/videos/interaction-step.mp4" data-label="Carrying a case onto a platform">
                 <div class="media-placeholder"><span class="media-index">06</span><div><strong>Case + platform</strong><span>Object and terrain interaction</span></div></div>
               </div>
-              <h3>Carrying a case across a platform</h3>
-              <p>It carries a case across a platform in one continuous sequence without switching controllers.</p>
+              <h3>Carrying a case onto a platform</h3>
+              <p>While holding a large black case, the robot steps onto the platform and stabilizes without dropping it.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/interaction-payload.mp4" data-label="Carrying a cardboard box onto a platform">
                 <div class="media-placeholder"><span class="media-index">07</span><div><strong>Box + platform</strong><span>Payload and terrain interaction</span></div></div>
               </div>
               <h3>Carrying a box onto a platform</h3>
-              <p>The robot steps onto a platform while carrying a cardboard box.</p>
+              <p>The robot climbs while carrying a cardboard box, adapting its balance to both the payload and the platform contact.</p>
             </article>
           </div>
         </div>
@@ -196,14 +196,14 @@
                 <div class="media-placeholder"><span class="media-index">08</span><div><strong>Chair removed</strong><span>Best-effort motion</span></div></div>
               </div>
               <h3>Missing support</h3>
-              <p>With an expected chair absent, the policy settles into a stable best-effort motion.</p>
+              <p>With an expected chair absent, the same sitting command resolves to a stable squat.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-step-removed.mp4" data-label="Step removed">
                 <div class="media-placeholder"><span class="media-index">09</span><div><strong>Step removed</strong><span>Best-effort motion</span></div></div>
               </div>
               <h3>Changed terrain</h3>
-              <p>With the expected platform absent, the policy settles into a stable best-effort motion.</p>
+              <p>With the expected platform absent, the policy settles into a stable best-effort motion. The robot keeps carrying instead of stopping.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-disturbance.mp4" data-label="Physical disturbance recovery">
@@ -299,9 +299,9 @@
           <div class="section-heading split-heading">
             <div>
               <p class="eyebrow">Core results</p>
-              <h2>Generalist performance across regimes</h2>
+              <h2>Strong across every regime</h2>
             </div>
-            <p>Best values are highlighted. All results are sim-to-sim in MuJoCo, using the official baseline checkpoints and the complete InterTrack controller with safety radius 3.</p>
+            <p>Best values are highlighted. All results are sim-to-sim in MuJoCo.</p>
           </div>
           <div class="result-callouts" aria-label="Result highlights">
             <div><strong>4.3&times;</strong><span>terrain-interaction success over the best evaluated baseline</span></div>
@@ -322,7 +322,7 @@
                   <th scope="col">MPKPE&#8595;</th><th scope="col">RootVel&#8595;</th><th scope="col">SR&#8593;</th>
                   <th scope="col">MPKPE&#8595;</th><th scope="col">RootPos&#8595;</th><th scope="col">SR&#8593;</th>
                   <th scope="col">MPKPE&#8595;</th><th scope="col">SR&#8593;</th>
-                  <th scope="col">SR<sup>†</sup>&#8593;</th><th scope="col">Jerk&#8595;</th>
+                  <th scope="col">SR&#8593;</th><th scope="col">Jerk&#8595;</th>
                 </tr>
               </thead>
               <tbody>
@@ -334,17 +334,18 @@
             </table>
           </div>
           <p class="table-note">
-            Position errors are in mm, RootVel in mm/s, Jerk in rad/s<sup>3</sup>, and SR in %. <sup>†</sup>Fall SR is recovery rate; all other SR columns treat a fall as failure. Each method is rolled out to the end of every reference.
+            Errors are in mm except RootVel (mm/s) and Jerk (rad/s<sup>3</sup>); SR is percent.
+            Fall SR uses the recovery criterion described in the paper.
           </p>
-          <p class="table-note">On Standard, InterTrack achieves the lowest MPKPE and highest SR among the three evaluated baselines; HoloMotion-1 achieves the lowest RootVel error.</p>
         </div>
       </section>
 
       <section class="band band-soft" id="method">
         <div class="section-shell">
           <div class="section-heading">
-            <p class="eyebrow">Method</p>
-            <h2>Method overview</h2>
+            <p class="eyebrow">Method overview</p>
+            <h2>A controller that models its own future behavior</h2>
+            <p>When terrain and objects make execution depend on supports, contacts, and loads, the controller infers these conditional dynamics from proprioceptive history without scene observations or privileged contact labels.</p>
           </div>
           <figure class="paper-figure">
             <div class="paper-image" data-image="assets/images/overview.webp" data-label="InterTrack behavior world model overview">
@@ -359,12 +360,6 @@
               At deployment, the preceding distribution identifies and corrects implausible commands.
             </figcaption>
           </figure>
-          <div class="method-details">
-            <h3>Problem setting</h3>
-            <p>When terrain and objects make execution depend on supports, contacts, and loads, the controller infers these conditional dynamics from proprioceptive history without scene observations or privileged contact labels.</p>
-            <h3>Hardware deployment</h3>
-            <p>Hardware deployment runs at 50 Hz with a 0.2 s look-ahead buffer for ten future reference frames.</p>
-          </div>
         </div>
       </section>
 
@@ -372,25 +367,21 @@
         <div class="section-shell">
           <div class="section-heading">
             <p class="eyebrow">Data pipeline</p>
-            <h2>Automatic spatial terrain annotation</h2>
+            <h2>From motion to spatial terrain</h2>
             <p>
-              We instead infer support geometry from retargeted trajectories, utilizing the
-              large scale of existing motion-capture corpora.
+              We automatically generate 3D support geometry from retargeted trajectories, utilizing the large scale of existing motion-capture corpora.
             </p>
           </div>
           <figure class="paper-figure">
             <a href="assets/images/terrain-pipeline.webp" target="_blank" rel="noopener">
-              <img src="assets/images/terrain-pipeline.webp" width="2800" height="579" loading="lazy" decoding="async" alt="Automatic spatial terrain annotation pipeline and dataset coverage">
+              <img src="assets/images/terrain-pipeline.webp" width="2800" height="760" loading="lazy" decoding="async" alt="Automatic spatial terrain annotation pipeline">
             </a>
             <figcaption>
-              <strong>Fig. 3. Automatic motion-to-terrain annotation and dataset coverage.</strong>
+              <strong>Fig. 3. Automatic motion-to-terrain annotation.</strong>
               <strong>(a)–(e)</strong> Surface samples that exhibit a contact deceleration are accumulated,
               filtered against whole-body penetration, clustered, and fitted with spatial collision primitives.
-              <strong>(f)</strong> Outer and inner rings show the total duration of each source corpus
-              and its identified terrain-interaction duration, respectively.
             </figcaption>
           </figure>
-          <p class="section-copy">We apply the pipeline to three retargeted corpora: Bones-Seed (288 h), MotionMillion (900 h), and MotionDecode (1000 h), identifying 12.50, 22.22, and 37.85 hours of terrain interaction.</p>
         </div>
       </section>
 
@@ -406,12 +397,12 @@
       </section>
       <section class="band band-soft" id="details" aria-labelledby="details-title">
         <div class="section-shell">
-          <div class="section-heading split-heading">
+          <div class="section-heading details-heading">
             <div>
               <p class="eyebrow">Explore more</p>
               <h2 id="details-title">Details</h2>
             </div>
-            <p><a class="paper-open-link" href="assets/papers/intertrack-full.pdf?v=0407b0aff618#page=9&amp;view=FitH" target="_blank" rel="noopener">Open in a new tab</a></p>
+            <a class="paper-open-link" href="assets/papers/intertrack-full.pdf?v=0407b0aff618#page=9&amp;view=FitH" target="_blank" rel="noopener">Open in a new tab <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7m0-7L10 14M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/></svg></a>
           </div>
           <div class="pdf-reader" data-pdf="assets/papers/intertrack-full.pdf?v=0407b0aff618" data-start-page="9" aria-label="Details reader">
             <div class="pdf-toolbar">
