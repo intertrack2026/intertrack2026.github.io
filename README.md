@@ -15,7 +15,7 @@ The root `index.html` and `.nojekyll` are included.
 Run `python -m http.server 8000` from this directory and open
 http://localhost:8000/.
 
-## Media to supply
+## Media status
 
 The Details reader below the abstract loads `assets/papers/intertrack-full.pdf`
 and starts at page 9. The current file contains 11 pages, synchronized from
@@ -30,33 +30,17 @@ zoom, fit width, fullscreen, and download. PDF.js 6.3.289 is hosted locally in
 No external viewer service is used. Preview through HTTP with the command above
 (ES modules cannot load through `file://`); the direct PDF link remains available.
 
-The following files are intentionally absent pending anonymization.
-Their paths remain in the page; add approved replacements at the same paths
-and reload to display them. Until then, the page displays placeholders.
-Do not create empty MP4 or WebP files.
+All 15 videos referenced by the page are now included in `assets/videos/`.
+The original files were restored without editing or anonymization. They may
+contain branding, people, recognizable recording locations, or old project
+labels and still require review before use in an anonymous submission.
 
-All retained video slots require replacements because the original footage
-contains branding, people, recognizable recording locations, or old project
-labels. The method overview also contains laboratory footage.
-
-- `assets/videos/full-demo.mp4`
-- `assets/videos/sonic-payload.mp4`
-- `assets/videos/sonic-payload2.mp4`
-- `assets/videos/sonic-terrain.mp4`
-- `assets/videos/sonic-terrain2.mp4`
-- `assets/videos/interaction-chair.mp4`
-- `assets/videos/interaction-step.mp4`
-- `assets/videos/interaction-payload.mp4`
-- `assets/videos/robust-chair-removed.mp4`
-- `assets/videos/robust-step-removed.mp4`
-- `assets/videos/robust-disturbance.mp4`
-- `assets/videos/robust-unsafe-commands.mp4`
-- `assets/videos/motion-high-kick.mp4`
-- `assets/videos/motion-tai-chi.mp4`
-- `assets/videos/motion-jump.mp4`
-- `assets/images/overview.webp`
+`assets/images/overview.webp` remains absent pending anonymization. Its slot
+displays "Method overview figure forthcoming" until a replacement is supplied.
+The original method overview also contains laboratory footage.
+Do not create an empty WebP file.
 
 The terrain pipeline image matches the submission figure and is exported
-without embedded source-document metadata. Author names, affiliations,
+without embedded source-document metadata. In the page text, author names, affiliations,
 personal links, contact details, institutional logos, analytics, the robot
 transfer section, and the citation section are excluded.
